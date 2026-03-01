@@ -54,13 +54,15 @@ def create_datasets():
     y_test = torch.tensor([0, 1])
 
     # Uncomment these lines to increase the dataset size to run the multi-GPU script on up to 8 GPUs:
-    # factor = 4
-    # X_train = torch.cat([X_train + torch.randn_like(X_train) * 0.1 for _ in range(factor)])
-    # y_train = y_train.repeat(factor)
-    # X_test = torch.cat([X_test + torch.randn_like(X_test) * 0.1 for _ in range(factor)])
-    # y_test = y_test.repeat(factor)
+    factor = 400000
+    X_train = torch.cat([X_train + torch.randn_like(X_train) * 0.1 for _ in range(factor)])
+    y_train = y_train.repeat(factor)
+    X_test = torch.cat([X_test + torch.randn_like(X_test) * 0.1 for _ in range(factor)])
+    y_test = y_test.repeat(factor)
 
     train_ds = ToyDataset(X_train, y_train)
     test_ds = ToyDataset(X_test, y_test)
+
+    print(f"DATASET SIZE: train={len(train_ds)}, test = {len(test_ds)}")
     
     return train_ds, test_ds
