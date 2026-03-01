@@ -1,6 +1,6 @@
 # DDP Trial: PyTorch Distributed Data Parallel
 
-This is a minimal example demonstrating how to train a simple neural network using PyTorch's Distributed Data Parallel (DDP). It's designed to run on multiple GPUs using `torchrun`.
+This repository provides minimal examples demonstrating how to train a simple neural network using PyTorch. It includes both a single-device standard approach and a multi-device Distributed Data Parallel (DDP) approach.
 
 ## Prerequisites
 
@@ -29,7 +29,17 @@ This is a minimal example demonstrating how to train a simple neural network usi
    pip install -r requirements.txt
    ```
 
-## Running the Script
+## Running the Scripts
+
+### 1. Single Device (Standard Training)
+
+This script trains the model on a single GPU if available, or falls back to the CPU. It is a simplified version that does not use `torchrun` or DDP wrappers.
+
+```bash
+python single_gpu_script.py
+```
+
+### 2. Multi-GPU (Distributed Data Parallel)
 
 This script is meant to be run using `torchrun` to launch multiple processes (one per GPU).
 
